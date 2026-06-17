@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f0e8;
+  font-family: 'Times New Roman', Times, serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c2c2c;
+}
+
+.wrapper {
+  width: 420px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #2c2c2c;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #7a7060;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #c8bfa8;
+  border-radius: 8px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #5a5040;
+  font-style: italic;
+}
+
+input[type="text"],
+select {
+  background: #faf7f2;
+  border: 1px solid #c8bfa8;
+  color: #2c2c2c;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  padding: 9px 11px;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #8b7355;
+  background: #ffffff;
+}
+
+input.error {
+  border-color: #c0392b !important;
+  background: #fff5f5;
+}
+
+select {
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  padding: 11px;
+  background-color: #6b5b45;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #4e4030;
+}
+
+.btn:active {
+  background-color: #3a2f22;
+}
+
+#result {
+  margin-top: 18px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#result.show-success {
+  background-color: #eef6ee;
+  border: 1px solid #a8c8a8;
+  color: #2d6a2d;
+}
+
+#result.show-error {
+  background-color: #fdf0f0;
+  border: 1px solid #e0a8a8;
+  color: #c0392b;
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-style: italic;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Calculator</title>
+  <link rel="stylesheet" href="task2_calculator.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>Quick Calculator</h1>
+
+
+    <div class="card">
+      <div class="row">
+
+        <div class="field">
+          <label for="txtNo1">Number 1</label>
+          <input type="text" id="txtNo1" placeholder="e.g. 5">
+        </div>
+
+        <div class="field" style="flex:0.8">
+          <label for="ddOperator">Operator</label>
+          <select id="ddOperator">
+            <option value="add">+ Add</option>
+            <option value="subtract">- Subtract</option>
+            <option value="multiply">x Multiply</option>
+            <option value="divide">/ Divide</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="txtNo2">Number 2</label>
+          <input type="text" id="txtNo2" placeholder="e.g. 5">
+        </div>
+
+      </div>
+
+      <button class="btn" onclick="calculate()">Calculate</button>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      var input1 = document.getElementById('txtNo1');
+      var input2 = document.getElementById('txtNo2');
+      var operator = document.getElementById('ddOperator').value;
+      var result = document.getElementById('result');
+
+      input1.classList.remove('error');
+      input2.classList.remove('error');
+      result.className = '';
+      result.textContent = '';
+
+      var val1 = input1.value.trim();
+      var val2 = input2.value.trim();
+
+      if (val1 === '' && val2 === '') {
+        input1.classList.add('error');
+        input2.classList.add('error');
+        result.className = 'show-error';
+        result.textContent = 'Both fields are required.';
+        return;
+      }
+      if (val1 === '') {
+        input1.classList.add('error');
+        result.className = 'show-error';
+        result.textContent = 'Number 1 is required.';
+        return;
+      }
+      if (val2 === '') {
+        input2.classList.add('error');
+        result.className = 'show-error';
+        result.textContent = 'Number 2 is required.';
+        return;
+      }
+
+      var num1 = parseFloat(val1);
+      var num2 = parseFloat(val2);
+
+      if (isNaN(num1)) {
+        input1.classList.add('error');
+        result.className = 'show-error';
+        result.textContent = 'Number 1 must be a valid number.';
+        return;
+      }
+      if (isNaN(num2)) {
+        input2.classList.add('error');
+        result.className = 'show-error';
+        result.textContent = 'Number 2 must be a valid number.';
+        return;
+      }
+
+      var answer;
+      var symbol;
+
+      if (operator === 'add') {
+        answer = num1 + num2; symbol = '+';
+      } else if (operator === 'subtract') {
+        answer = num1 - num2; symbol = '-';
+      } else if (operator === 'multiply') {
+        answer = num1 * num2; symbol = 'x';
+      } else if (operator === 'divide') {
+        if (num2 === 0) {
+          result.className = 'show-error';
+          result.textContent = 'Cannot divide by zero.';
+          return;
+        }
+        answer = num1 / num2; symbol = '/';
+      }
+
+      var display = parseFloat(answer.toFixed(10));
+
+      result.className = 'show-success';
+      result.textContent = num1 + ' ' + symbol + ' ' + num2 + ' = ' + display;
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') calculate();
+    });
+  </script>
+
+</body>
+</html>
